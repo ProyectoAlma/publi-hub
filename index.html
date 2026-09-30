@@ -51,6 +51,8 @@
   a.link .ico{ width:30px;height:30px;flex:0 0 30px;display:grid;place-items:center; }
   a.link .t{ font-weight:700; } a.link .s{ display:block; font-weight:400; font-size:.82rem; color:var(--muted); }
   /* reels */
+  .embeds{ display:flex; flex-wrap:wrap; justify-content:center; align-items:flex-start; gap:16px; }
+  .embeds .instagram-media{ flex:0 1 340px; }
   .reels{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
   .reels a{ aspect-ratio:9/16; border-radius:16px; position:relative; text-decoration:none; overflow:hidden;
     background:linear-gradient(160deg,#7d4faf,#4a2a7a); border:1px solid var(--line);
@@ -88,7 +90,7 @@
     <div class="spwrap">
       <div class="card spotify">
         <div class="lbl center">Escucha mis meditaciones</div>
-        <iframe src="https://open.spotify.com/embed/show/3A6jfJlXvpIyBzDCHZFozD?utm_source=generator&theme=0" height="440" loading="lazy" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+        <iframe src="https://open.spotify.com/embed/show/3A6jfJlXvpIyBzDCHZFozD?utm_source=generator" height="640" loading="lazy" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
       </div>
     </div>
     <a class="cta" href="https://www.instagram.com/reneboiero/" target="_blank" rel="noopener">
@@ -111,10 +113,10 @@
   <section>
     <h2>Reels mas vistos</h2>
     <p class="tag center" style="margin-bottom:16px">Los favoritos de la comunidad 👇</p>
-    <div class="reels">
-      <a href="https://www.instagram.com/reel/Dd2saHgMmfx/" target="_blank" rel="noopener"><span class="play"><svg width="17" height="17" viewBox="0 0 24 24" fill="#6d3fb0"><path d="M8 5v14l11-7z"/></svg></span><span class="n">Ver reel</span></a>
-      <a href="https://www.instagram.com/reel/Dd6yaSJSSqA/" target="_blank" rel="noopener"><span class="play"><svg width="17" height="17" viewBox="0 0 24 24" fill="#6d3fb0"><path d="M8 5v14l11-7z"/></svg></span><span class="n">Ver reel</span></a>
-      <a href="https://www.instagram.com/reel/DbWMh7TCTwa/" target="_blank" rel="noopener"><span class="play"><svg width="17" height="17" viewBox="0 0 24 24" fill="#6d3fb0"><path d="M8 5v14l11-7z"/></svg></span><span class="n">Ver reel</span></a>
+    <div class="embeds">
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/Dd2saHgMmfx/?utm_source=ig_embed" data-instgrm-version="14" style="background:#fff;border:0;border-radius:16px;box-shadow:0 16px 32px -20px rgba(63,36,112,.5);margin:0;max-width:340px;min-width:280px;width:100%;"><a href="https://www.instagram.com/reel/Dd2saHgMmfx/" target="_blank" rel="noopener">Ver reel</a></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/Dd6yaSJSSqA/?utm_source=ig_embed" data-instgrm-version="14" style="background:#fff;border:0;border-radius:16px;box-shadow:0 16px 32px -20px rgba(63,36,112,.5);margin:0;max-width:340px;min-width:280px;width:100%;"><a href="https://www.instagram.com/reel/Dd6yaSJSSqA/" target="_blank" rel="noopener">Ver reel</a></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DbWMh7TCTwa/?utm_source=ig_embed" data-instgrm-version="14" style="background:#fff;border:0;border-radius:16px;box-shadow:0 16px 32px -20px rgba(63,36,112,.5);margin:0;max-width:340px;min-width:280px;width:100%;"><a href="https://www.instagram.com/reel/DbWMh7TCTwa/" target="_blank" rel="noopener">Ver reel</a></blockquote>
     </div>
   </section>
 
@@ -138,4 +140,6 @@
   </section>
 
   <div class="foot">Rene Boiero · Gracias por estar aca 💜</div>
-</div></body></html>
+</div>
+<script async src="https://www.instagram.com/embed.js"></script>
+</body></html>
