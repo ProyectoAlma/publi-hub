@@ -36,6 +36,8 @@
   .spwrap{ max-width:560px; margin:0 auto 22px; }
   .spotify{ padding:16px; }
   .spotify iframe{ display:block; width:100%; border:0; border-radius:14px; }
+  .eplist{ display:flex; flex-direction:column; gap:10px; }
+  .eplist iframe{ display:block; width:100%; border:0; border-radius:12px; }
   .cta{ display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; padding:30px 26px;
     text-decoration:none; text-align:center; color:#fff; border-radius:20px; background:linear-gradient(125deg,#7d3fb0,#b34a8e 55%,#e8963f);
     box-shadow:0 20px 40px -18px rgba(63,36,112,.6); }
@@ -51,8 +53,9 @@
   a.link .ico{ width:30px;height:30px;flex:0 0 30px;display:grid;place-items:center; }
   a.link .t{ font-weight:700; } a.link .s{ display:block; font-weight:400; font-size:.82rem; color:var(--muted); }
   /* reels */
-  .embeds{ display:flex; flex-wrap:wrap; justify-content:center; align-items:flex-start; gap:16px; }
-  .embeds .instagram-media{ flex:0 1 340px; }
+  .embeds{ display:flex; justify-content:center; flex-wrap:nowrap; gap:12px; }
+  .embeds .instagram-media{ flex:0 0 326px; min-width:326px !important; width:326px !important; max-width:326px !important; margin:0 !important; }
+  @media (max-width:1045px){ .embeds{ justify-content:flex-start; overflow-x:auto; -webkit-overflow-scrolling:touch; padding-bottom:10px; } }
   .reels{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
   .reels a{ aspect-ratio:9/16; border-radius:16px; position:relative; text-decoration:none; overflow:hidden;
     background:linear-gradient(160deg,#7d4faf,#4a2a7a); border:1px solid var(--line);
@@ -90,7 +93,14 @@
     <div class="spwrap">
       <div class="card spotify">
         <div class="lbl center">Escucha mis meditaciones</div>
-        <iframe src="https://open.spotify.com/embed/show/3A6jfJlXvpIyBzDCHZFozD?utm_source=generator" height="640" loading="lazy" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+        <div class="eplist">
+          <iframe src="https://open.spotify.com/embed/episode/5juORz7E8tTHBkNZLia4XD?utm_source=generator" height="152" loading="lazy" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+          <iframe src="https://open.spotify.com/embed/episode/33gbL5wPXCHCgSVLcCSVLE?utm_source=generator" height="152" loading="lazy" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+          <iframe src="https://open.spotify.com/embed/episode/1951XjvMaxNqWK4pMmwbI6?utm_source=generator" height="152" loading="lazy" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+          <iframe src="https://open.spotify.com/embed/episode/3mpUjTMd2ggVTIXUPCZWE3?utm_source=generator" height="152" loading="lazy" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+          <iframe src="https://open.spotify.com/embed/episode/6gjfVMvOE2NrrJPzoR4BwC?utm_source=generator" height="152" loading="lazy" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+          <iframe src="https://open.spotify.com/embed/episode/6QgioT3U0p6J0HmvezLhQQ?utm_source=generator" height="152" loading="lazy" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+        </div>
       </div>
     </div>
     <a class="cta" href="https://www.instagram.com/reneboiero/" target="_blank" rel="noopener">
@@ -122,7 +132,7 @@
 
   <section>
     <h2>Mis libros</h2>
-    <p class="tag center" style="margin-bottom:16px">Para acompanar tu camino 📖</p>
+    <p class="tag center" style="margin-bottom:16px">Para acompañar tu camino 📖</p>
     <div class="books">
       <a class="book" href="https://www.amazon.com/dp/B08HHG5XQQ" target="_blank" rel="noopener">
         <img loading="lazy" src="https://reneboiero.com.ar/wp-content/uploads/2023/12/post-amazon-1.jpg" alt="Totalidad en Tres">
