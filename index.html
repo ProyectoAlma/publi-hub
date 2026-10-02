@@ -92,7 +92,98 @@
     <p class="tag">Meditaciones, encuentros y contenido para <b>reconectar con tu alma</b>. Todo en un solo lugar 🌿</p>
   </header>
 
-  <section>
+  <!-- ===== Agenda de eventos (Google Calendar) ===== -->
+<section id="agenda">
+  <h2>Agenda de eventos</h2>
+  <p class="tag">Talleres, charlas y encuentros para reconectar con tu alma. Sumate a los próximos.</p>
+  <style>
+  #agenda .evc-wrap{max-width:860px;margin:18px auto 0}
+  #agenda .evc-tabs{display:flex;justify-content:center;gap:6px;background:#efe7db;border-radius:999px;padding:5px;width:max-content;margin:0 auto 18px}
+  #agenda .evc-tab{border:0;background:transparent;font-family:'Inter',sans-serif;font-weight:600;color:var(--muted);padding:9px 20px;border-radius:999px;cursor:pointer;transition:.2s;font-size:.92rem}
+  #agenda .evc-tab.on{background:var(--violet);color:#fff;box-shadow:0 8px 18px -8px rgba(109,63,176,.7)}
+  #agenda .evc-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+  #agenda .evc-mname{font-family:'Fraunces',serif;font-weight:600;color:var(--violet-deep);font-size:1.3rem;text-transform:capitalize}
+  #agenda .evc-nav{display:flex;gap:8px}
+  #agenda .evc-nav button{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--card);cursor:pointer;font-size:17px;color:var(--violet);transition:.2s;line-height:1}
+  #agenda .evc-nav button:hover{background:var(--violet);color:#fff;border-color:var(--violet)}
+  #agenda .evc-cal{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:0 16px 32px -20px rgba(63,36,112,.5);overflow:hidden}
+  #agenda .evc-dow{display:grid;grid-template-columns:repeat(7,1fr);background:#f3ecdf}
+  #agenda .evc-dow span{padding:11px 4px;text-align:center;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  #agenda .evc-days{display:grid;grid-template-columns:repeat(7,1fr)}
+  #agenda .evc-cell{min-height:88px;border-top:1px solid var(--line);border-left:1px solid var(--line);padding:7px 7px 9px}
+  #agenda .evc-cell:nth-child(7n+1){border-left:0}
+  #agenda .evc-dn{font-size:.82rem;color:var(--muted);font-weight:600}
+  #agenda .evc-cell.out .evc-dn{opacity:.35}
+  #agenda .evc-cell.today .evc-dn{background:var(--gold);color:#fff;width:24px;height:24px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center}
+  #agenda .evc-ev{margin-top:5px;background:rgba(109,63,176,.12);color:var(--violet);border-left:3px solid var(--violet);border-radius:6px;padding:3px 6px;font-size:.72rem;font-weight:600;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:'Inter',sans-serif}
+  #agenda .evc-ev.alt{background:rgba(201,162,78,.18);color:#a07a24;border-left-color:var(--gold)}
+  #agenda .evc-list{display:grid;gap:12px}
+  #agenda .evc-item{display:grid;grid-template-columns:70px 1fr auto;gap:16px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:0 16px 32px -22px rgba(63,36,112,.5);padding:16px 18px}
+  #agenda .evc-date{background:var(--violet);color:#fff;border-radius:13px;text-align:center;padding:9px 6px;line-height:1}
+  #agenda .evc-date .d{font-family:'Fraunces',serif;font-size:1.6rem;font-weight:600}
+  #agenda .evc-date .m{font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;margin-top:3px;opacity:.92}
+  #agenda .evc-it-t{font-family:'Fraunces',serif;font-size:1.12rem;font-weight:600;color:var(--ink)}
+  #agenda .evc-it-m{color:var(--muted);font-size:.84rem;margin-top:4px;display:flex;flex-wrap:wrap;gap:3px 14px}
+  #agenda .evc-cta{background:var(--gold);color:#4a3607;text-decoration:none;font-weight:700;font-size:.85rem;padding:10px 18px;border-radius:999px;white-space:nowrap;transition:.2s}
+  #agenda .evc-cta:hover{background:var(--violet);color:#fff}
+  #agenda .evc-empty{color:var(--muted);padding:26px;text-align:center}
+  @media(max-width:620px){
+    #agenda .evc-cell{min-height:56px}
+    #agenda .evc-ev{font-size:0;padding:0;height:7px;border-radius:999px;border-left:0;margin-top:4px}
+    #agenda .evc-item{grid-template-columns:60px 1fr;gap:12px}
+    #agenda .evc-cta{grid-column:1/-1;text-align:center}
+  }
+  </style>
+  <div class="evc-wrap">
+    <div class="evc-tabs"><button class="evc-tab on" data-v="prox">Próximos</button><button class="evc-tab" data-v="mes">Mes</button></div>
+    <div id="evcMes" style="display:none">
+      <div class="evc-head"><div class="evc-mname" id="evcM"></div><div class="evc-nav"><button id="evcPrev" aria-label="Anterior">‹</button><button id="evcNext" aria-label="Siguiente">›</button></div></div>
+      <div class="evc-cal"><div class="evc-dow"><span>Dom</span><span>Lun</span><span>Mar</span><span>Mié</span><span>Jue</span><span>Vie</span><span>Sáb</span></div><div class="evc-days" id="evcD"></div></div>
+    </div>
+    <div id="evcProx"><div class="evc-list" id="evcL"></div></div>
+  </div>
+  <script>
+  (function(){
+    var SAMPLE=[
+      {title:"Meditación guiada: El Alma",date:"2026-10-09",time:"19:00",place:"Online · Zoom",url:"#"},
+      {title:"Taller: Reconectar con tu energía",date:"2026-10-18",time:"10:30",place:"Casa Alma, Córdoba",url:"#"},
+      {title:"Charla: Entre lo finito y lo infinito",date:"2026-10-25",time:"18:00",place:"Online · YouTube",url:"#"},
+      {title:"Retiro de almas (jornada)",date:"2026-11-08",time:"09:00",place:"Arenal",url:"#"}
+    ];
+    var EV=SAMPLE.slice();
+    var MES=["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+    var MC=["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"];
+    var cur=new Date();cur.setDate(1);
+    function ymd(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");}
+    function month(){
+      var y=cur.getFullYear(),m=cur.getMonth();document.getElementById("evcM").textContent=MES[m]+" "+y;
+      var first=new Date(y,m,1).getDay(),dim=new Date(y,m+1,0).getDate(),pdim=new Date(y,m,0).getDate();
+      var D=document.getElementById("evcD");D.innerHTML="";var today=ymd(new Date());var cells=[];
+      for(var i=first-1;i>=0;i--)cells.push({d:pdim-i,out:1});
+      for(var d=1;d<=dim;d++)cells.push({d:d,ds:y+"-"+String(m+1).padStart(2,"0")+"-"+String(d).padStart(2,"0")});
+      while(cells.length%7)cells.push({d:"",out:1});
+      cells.forEach(function(c){var el=document.createElement("div");el.className="evc-cell"+(c.out?" out":"")+(c.ds===today?" today":"");el.innerHTML='<span class="evc-dn">'+c.d+'</span>';
+        if(c.ds)EV.filter(function(e){return e.date===c.ds;}).forEach(function(e,j){var p=document.createElement("div");p.className="evc-ev"+(j%2?" alt":"");p.textContent=(e.time?e.time+" ":"")+e.title;p.title=e.title;p.onclick=function(){if(e.url&&e.url!=="#")window.open(e.url,"_blank");};el.appendChild(p);});
+        D.appendChild(el);});
+    }
+    function list(){
+      var now=new Date();now.setHours(0,0,0,0);
+      var up=EV.filter(function(e){return new Date(e.date+"T23:59")>=now;}).sort(function(a,b){return a.date.localeCompare(b.date);});
+      var L=document.getElementById("evcL");L.innerHTML=up.length?"":'<div class="evc-empty">No hay eventos próximos por ahora. ¡Pronto habrá novedades! 🌱</div>';
+      up.forEach(function(e){var dt=new Date(e.date+"T12:00");var it=document.createElement("div");it.className="evc-item";
+        it.innerHTML='<div class="evc-date"><div class="d">'+dt.getDate()+'</div><div class="m">'+MC[dt.getMonth()]+'</div></div><div><div class="evc-it-t">'+e.title+'</div><div class="evc-it-m"><span>🗓️ '+dt.toLocaleDateString("es-AR",{weekday:"long"})+(e.time?" · "+e.time+" h":"")+'</span>'+(e.place?'<span>📍 '+e.place+'</span>':'')+'</div></div><a class="evc-cta" href="'+(e.url||"#")+'" target="_blank" rel="noopener">Inscribirme</a>';
+        L.appendChild(it);});
+    }
+    document.querySelectorAll("#agenda .evc-tab").forEach(function(t){t.onclick=function(){document.querySelectorAll("#agenda .evc-tab").forEach(function(x){x.classList.remove("on");});t.classList.add("on");var v=t.dataset.v;document.getElementById("evcMes").style.display=v==="mes"?"":"none";document.getElementById("evcProx").style.display=v==="prox"?"":"none";};});
+    document.getElementById("evcPrev").onclick=function(){cur.setMonth(cur.getMonth()-1);month();};
+    document.getElementById("evcNext").onclick=function(){cur.setMonth(cur.getMonth()+1);month();};
+    function go(){month();list();}
+    fetch("/.netlify/functions/eventos").then(function(r){return r.json();}).then(function(d){if(d&&d.events&&d.events.length){EV=d.events;}go();}).catch(go);
+  })();
+  </script>
+</section>
+
+    <section>
     <div class="spwrap">
       <div class="card spotify">
         <div class="lbl center">Escucha mis meditaciones</div>

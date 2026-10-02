@@ -1,3 +1,11 @@
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+[[redirects]]
+  from = "/.netlify/functions/*"
+  status = 200
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
