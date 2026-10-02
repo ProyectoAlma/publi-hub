@@ -178,7 +178,8 @@
     document.getElementById("evcPrev").onclick=function(){cur.setMonth(cur.getMonth()-1);month();};
     document.getElementById("evcNext").onclick=function(){cur.setMonth(cur.getMonth()+1);month();};
     function go(){month();list();}
-    fetch("/.netlify/functions/eventos").then(function(r){return r.json();}).then(function(d){if(d&&d.events&&d.events.length){EV=d.events;}go();}).catch(go);
+    function clean(e){var u=(e.url||"").split(/["'<>\\]/)[0];return{title:(e.title||"Evento").split(/[<>]/)[0],date:e.date,time:(e.time||"").split(/[<>"]/)[0],place:(e.place||"").split(/[<>]/)[0],url:(u&&/^https?:/.test(u))?u:"#"};}
+    fetch("/.netlify/functions/eventos").then(function(r){return r.json();}).then(function(d){if(d&&d.events&&d.events.length){EV=d.events.map(clean);}go();}).catch(go);
   })();
   </script>
 </section>
