@@ -42,7 +42,8 @@ export const handler = async () => {
       const place = unescape(get("LOCATION"));
       const desc = unescape(get("DESCRIPTION"));
       let link = get("URL");
-      if(!link){ const m=desc.match(/https?:\/\/\S+/); if(m) link=m[0]; }
+      if(!link){ const m=desc.match(/https?:\/\/[^\s"'<>\\]+/); if(m) link=m[0]; }
+      else { const m=link.match(/https?:\/\/[^\s"'<>\\]+/); if(m) link=m[0]; }
       const status = get("STATUS");
       if(status==="CANCELLED") continue;
       events.push({title:summary, date:dt.date, time:dt.time, place, url: link||"#"});
