@@ -86,7 +86,19 @@
       scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; padding-bottom:12px; }
     .book{ scroll-snap-align:start; }
   }
-</style></head><body>
+</style>
+<style id="eser-style">
+#eser{max-width:640px;margin:30px auto}
+.eser-card{background:radial-gradient(640px 320px at 50% -25%,rgba(86,198,230,.18),transparent 60%),linear-gradient(180deg,#0a1726,#0d2236);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:26px 26px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center}
+.eser-eye{display:block;color:var(--gold);font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px}
+.eser-logo{width:160px;max-width:62%;height:auto;display:block;margin:0 0 12px}
+.eser-tag{color:#fff;font-size:1.04rem;line-height:1.4;margin:0 0 4px;max-width:24ch}
+.eser-by{color:#aeb8c4;font-size:.76rem;letter-spacing:.02em;margin:0 0 16px}
+.eser-btn{display:inline-block;background:var(--gold);color:#201a0c;font-family:'Fraunces',serif;font-weight:600;font-size:1.02rem;padding:11px 20px;border-radius:999px;text-decoration:none}
+.eser-reel-ig{width:224px;height:398px;border:0;border-radius:14px;background:#fff;box-shadow:0 2px 14px rgba(0,0,0,.3)}
+@media(max-width:560px){.eser-card{grid-template-columns:1fr;text-align:center;justify-items:center}.eser-logo,.eser-tag,.eser-by{margin-left:auto;margin-right:auto}.eser-reel-ig{width:100%;max-width:280px;height:498px}}
+</style>
+</head><body>
 <div class="page">
   <header>
     <span class="logo"></span>
@@ -244,7 +256,21 @@
     </div>
   </section>
 
-  <div class="foot">Rene Boiero · Gracias por estar aca 💜</div>
+    <!-- ===== ESER (podcast de Rene) ===== -->
+  <section id="eser">
+    <div class="eser-card">
+      <div class="eser-copy">
+        <span class="eser-eye">El podcast de Rene</span>
+        <img class="eser-logo" src="assets/eser-logo.png" alt="ESER — el podcast de Rene Boiero" loading="lazy" />
+        <p class="eser-tag">Un podcast para reconectar con tu alma.</p>
+        <p class="eser-by">Una creación de Rene Boiero × OSMOS Global.</p>
+        <a class="eser-btn" href="https://www.instagram.com/eser_podcast/" target="_blank" rel="noopener">Seguí ESER en Instagram</a>
+      </div>
+      <iframe class="eser-reel-ig" src="https://www.instagram.com/reel/DeX5W27BpEO/embed/" title="Reel de ESER en Instagram" loading="lazy" allowfullscreen scrolling="no"></iframe>
+    </div>
+  </section>
+
+<div class="foot">Rene Boiero · Gracias por estar aca 💜</div>
 </div>
 <script async src="https://www.instagram.com/embed.js"></script>
 </body></html>
