@@ -47,6 +47,19 @@
   .cta .k{ display:flex; align-items:center; gap:12px; font-family:'Fraunces',serif; font-size:1.5rem; font-weight:600; }
   .cta .s{ opacity:.9; font-size:.98rem; }
   .cta .ico svg{display:block}
+  /* boton lista de espera de citas */
+  a.waitlist{ display:flex; align-items:center; justify-content:center; gap:18px; max-width:640px; margin:0 auto;
+    padding:20px 28px; border-radius:999px; text-decoration:none; color:var(--violet-deep);
+    background:var(--card); border:1.5px solid var(--gold); box-shadow:0 16px 34px -20px rgba(63,36,112,.55);
+    transition:transform .12s, box-shadow .12s; }
+  a.waitlist:hover{ transform:translateY(-2px); box-shadow:0 20px 40px -18px rgba(63,36,112,.6); }
+  a.waitlist:focus-visible{ outline:3px solid var(--violet); outline-offset:3px; }
+  a.waitlist .ico{ width:48px; height:48px; flex:0 0 48px; border-radius:50%; display:grid; place-items:center; background:var(--violet); }
+  a.waitlist .ico svg{ display:block }
+  a.waitlist .k{ display:block; font-family:'Fraunces',serif; font-size:1.3rem; font-weight:600; line-height:1.2; }
+  a.waitlist .s{ display:block; font-size:.92rem; color:var(--muted); margin-top:3px; }
+  a.waitlist .arrow{ font-size:1.5rem; color:var(--gold); margin-left:auto; }
+  @media (max-width:560px){ a.waitlist{ border-radius:22px; padding:18px 20px; gap:14px; } a.waitlist .k{ font-size:1.12rem; } }
   /* grilla de links secundarios */
   .grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
   a.link{ display:flex; align-items:center; gap:14px; text-decoration:none; color:var(--ink);
@@ -105,6 +118,15 @@
     <h1>Conecta con <span>tu alma</span></h1>
     <p class="tag">Meditaciones, encuentros y contenido para <b>reconectar con tu alma</b>. Todo en un solo lugar 🌿</p>
   </header>
+
+  <!-- ===== Lista de espera de citas ===== -->
+  <section>
+    <a class="waitlist" href="/lista-de-espera/">
+      <span class="ico" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="3"/><path d="M8 2v4M16 2v4M3 10h18"/><path d="M9 15l2 2 4-4"/></svg></span>
+      <span><span class="k">Citas con René: anotate en la Lista de Espera</span><span class="s">Por ahora no hay turnos disponibles. Dejanos tus datos y te contactamos.</span></span>
+      <span class="arrow" aria-hidden="true">→</span>
+    </a>
+  </section>
 
   <!-- ===== Agenda de eventos (Google Calendar) ===== -->
     <section>
